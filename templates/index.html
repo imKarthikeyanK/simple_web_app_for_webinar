@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <script src="static/js/index.js"></script>
-    <link rel="stylesheet" href="static/css/index.css">
+   <meta charset="UTF-8">
+   <title>Login</title>
+   <script src="{{ url_for('static', filename='../static/js/index.js') }}"></script>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/index.css') }}">
 </head>
 <body>
-<header></header>
+<header>Simplee.io</header>
 <main>
-     <div class="main-container">
-        <div class="login-container">
-            <div class="login-header">
-                <div class="image">
-                    <img src="static/images/loginicon.png">
-                </div>
-                <div class="image-header">
-                    simplee.com
-                </div>
+    <div class="main-container">
+        {% if login != "success" %}
+       <div class="login-container">
+           <div class="login-header">
+               <div class="image">
+                   <img src="/static/images/loginicon.png">
+               </div>
+               <div class="image-header">
+                   simplee.com
+               </div>
+           </div>
+           {% if login == "failed" %}<p id="invalidCreds">Invalid Email or Password. Please check and try again<p>{% endif %}
+           <form action="{{ url_for('login') }}" method="post">
+               <label for="email" class="pt-10">Email</label>
+               <input type="email" id="email" name="email" placeholder="Please enter your Email" required autocomplete="off">
+               <label for="password" class="pt-10">Password</label>
+               <input type="password" id="password" name="password" placeholder="Please enter your Password" required>
+               <input type="submit" value="LOGIN" />
+           </form>
+       </div>
+        {% endif %}
+        {% if login == "success" %}
+        <div class="login-success">
+            <div class="success-login">
+                <h3>Login Success</h3>
+                <h1>Welcome {{ name }}</h1>
             </div>
-            <form action="/login" method="POST">
-                <label for="email" class="pt-10">Email</label>
-                <input type="email" id="email" placeholder="Please enter your Email" required autocomplete="off">
-                <label for="password" class="pt-10">Password</label>
-                <input type="password" id="password" placeholder="Please enter your Password" required>
-                <button type="submit">LOGIN</button>
-            </form>
         </div>
-    </div>
+        {% endif %}
+   </div>
 </main>
-<footer></footer>
+<footer>Copyright 2021 Simplee.io</footer>
 </body>
 </html>
