@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="static/js/index.js"></script>
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+<header></header>
+<main>
+     <div class="main-container">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="image">
+                    <img src="static/images/loginicon.png">
+                </div>
+                <div class="image-header">
+                    simplee.com
+                </div>
+            </div>
+            <form action="/login" method="POST">
+                <label for="email" class="pt-10">Email</label>
+                <input type="email" id="email" placeholder="Please enter your Email" required autocomplete="off">
+                <label for="password" class="pt-10">Password</label>
+                <input type="password" id="password" placeholder="Please enter your Password" required>
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+</main>
+<footer></footer>
+</body>
+</html>
